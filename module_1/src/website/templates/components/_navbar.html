@@ -1,5 +1,5 @@
 <!-- Navbar Component -->
-<nav class="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50 h-10">
+<nav class="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50 h-12">
   <div class="max-w-screen-xl flex items-center justify-between mx-auto px-4 h-full">
     <!-- Logo / Profile -->
     <a href="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -10,11 +10,11 @@
     </a>
 
     <!-- Toggle Button (Mobile) -->
-    <button data-collapse-toggle="navbar-default" type="button"
+    <button id="mobile-toggle" type="button"
             class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden 
                    hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 
                    dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-default" aria-expanded="false">
+            aria-controls="mobile-menu" aria-expanded="false">
       <span class="sr-only">Open main menu</span>
       <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -22,7 +22,7 @@
       </svg>
     </button>
 
-    <!-- Nav Links -->
+    <!-- Nav Links (Desktop) -->
     <div class="hidden md:flex md:items-center" id="navbar-default">
       <ul class="font-normal flex space-x-6 text-sm text-gray-900 dark:text-white">
         <li><a href="#home" class="hover:text-primary-300">Home</a></li>
@@ -34,14 +34,41 @@
     </div>
   </div>
 
-  <!-- Mobile Dropdown (absolute) -->
-  <div class="md:hidden hidden px-4 pb-4 bg-white dark:bg-gray-900 w-full absolute top-10 left-0 shadow-lg z-40" id="navbar-default">
-    <ul class="flex flex-col space-y-2 text-sm text-gray-900 dark:text-white">
-      <li><a href="#home" class="block py-2 px-3 hover:text-primary-300">Home</a></li>
-      <li><a href="#profile" class="block py-2 px-3 hover:text-primary-300">Profile</a></li>
-      <li><a href="#experience" class="block py-2 px-3 hover:text-primary-300">Experience</a></li>
-      <li><a href="#recognition" class="block py-2 px-3 hover:text-primary-300">Recognition</a></li>
-      <li><a href="#contact" class="block py-2 px-3 hover:text-primary-300">Contact</a></li>
+  <!-- Mobile Dropdown Menu -->
+  <div class="md:hidden hidden px-4 pb-4 bg-white dark:bg-gray-900 w-full absolute top-10 left-0 shadow-lg z-40"
+       id="mobile-menu">
+    <ul class="flex flex-col items-center space-y-4 text-sm text-gray-900 dark:text-white">
+      <!-- Centered links with space and hover effects -->
+      <li>
+        <a href="#home"
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#profile"
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+          Profile
+        </a>
+      </li>
+      <li>
+        <a href="#experience"
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+          Experience
+        </a>
+      </li>
+      <li>
+        <a href="#recognition"
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+          Recognition
+        </a>
+      </li>
+      <li>
+        <a href="#contact"
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+          Contact
+        </a>
+      </li>
     </ul>
   </div>
 </nav>

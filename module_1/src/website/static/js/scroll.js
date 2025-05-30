@@ -8,10 +8,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Toggles the nav menu on Mobile
-document.querySelector('[data-collapse-toggle]').addEventListener('click', function () {
-  const menu = document.getElementById('navbar-default');
-  menu.classList.toggle('hidden');
-});
+// Handles open/close on click & outside of modal when the
+// Toggle nav menu is clicke on mobile
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("mobile-toggle");
+  const menu = document.getElementById("mobile-menu");
 
-// Dynamically generates the year for the copyright element
-document.getElementById('year').textContent = new Date().getFullYear();
+  // Ensure elements exist before attaching event listeners
+  if (!toggleButton || !menu) return;
+
+  // Toggle menu visibility on button click
+  toggleButton.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent click from bubbling up to window
+    const isHidden = menu.classList.toggle("hidden");
+    toggleButton.setAttribute("aria-expanded", !isHidden);
+  });
+
+  // Close the menu when clicking outside
+  window.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !toggleButton.contains(e.target)) {
+      menu.classList.add("hidden");
+      toggleButton.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Close menu when any mobile nav link is clicked
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      toggleButton.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // Close menu on Escape key press
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      menu.classList.add("hidden");
+      toggleButton.setAttribute("aria-expanded", "false");
+    }
+  });
+});

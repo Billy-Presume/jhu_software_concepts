@@ -26,11 +26,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
 </head>
-<body class="scroll-smooth bg-[var(--color-primary-500)] text-[var(--color-surface-50)]">
-    {% include 'components/_navbar.html' %}
-    {% block content %}{% endblock %}
-    {% include 'components/_footer.html' %}
-    
-    <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
-</body>
+    <body class="scroll-smooth bg-[var(--color-primary-500)] text-[var(--color-surface-50)]">
+        {% include 'components/_navbar.html' %}
+        {% block content %}{% endblock %}
+        <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
+    </body>
 </html>

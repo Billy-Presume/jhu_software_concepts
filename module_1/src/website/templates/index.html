@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="snap-y snap-mandatory overflow-y-scroll h-[calc(100vh-2.5rem)] scroll-smooth">
+<main class="snap-y snap-mandatory overflow-y-scroll h-[calc(100vh-3rem)] scroll-smooth">
   {% include 'components/_home.html' %}
   {% include 'components/_profile.html' %}
   {% include 'components/_experience.html' %}
   {% include 'components/_recognition.html' %}
   {% include 'components/_contact.html' %}
-</div>
+   <!-- Footer: The footer snap scrolls to hide when the user scroll that's why it's not at the base.html -->
+  {% include 'components/_footer.html' %}
+</main>
 {% endblock %}
