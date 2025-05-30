@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billy Presume - Porfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon Handling -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+
+    <!-- Bootstrap CDN -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=JetBrains+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600&family=Big+Shoulders+Text:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Local CSS (loaded in proper order) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/core-utilities.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body class="scroll-smooth bg-[var(--color-primary-500)] text-[var(--color-surface-50)]">
+    {% include 'components/_navbar.html' %}
+    {% block content %}{% endblock %}
+    {% include 'components/_footer.html' %}
+    
+    <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
+</body>
+</html>

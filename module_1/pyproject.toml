@@ -1,0 +1,68 @@
+[project]
+name = "portfolio"
+version = "0.1.0"
+description = "A portfolio website built with python using Flask, HTML/CSS and Bootstrap."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "flask"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "yapf",
+    "pylint"
+]
+
+[tool.yapf]
+based_on_style = "google"
+column_limit = 100
+indent_width = 4
+blank_line_before_module_docstring = true
+coalesce_brackets = true
+split_before_logical_operator = true
+split_before_named_assigns = true
+spaces_before_comment = 2
+allow_split_before_dict_value = false
+each_dict_entry_on_separate_line = false
+split_arguments_when_comma_terminated = true
+dedent_closing_brackets = true
+split_complex_comprehension = true
+split_before_first_argument = true
+
+[tool.yapfignore]
+ignore_patterns = [
+  "temp/**/*.py",
+  "temp2/*.py",
+  "venv/**/*.py",
+  ".venv/**/*.py",
+  "env/**/*.py",
+  ".env/**/*.py",
+  "build/**/*.py",
+  "dist/**/*.py",
+  "__pycache__/**/*.py",
+  ".eggs/**/*.py",
+  "*.egg-info/**/*.py",
+  "docs/**/*.py",
+  ".vscode/**/*.py"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+    "missing-docstring",
+    "invalid-name"
+]
+
+[tool.pylint.BASIC]
+good-names = ["i", "j", "k", "x", "y", "z", "db"]
+
+[tool.pylint.FORMAT]
+max-line-length = 150
+
+[tool.mypy]
+strict = true

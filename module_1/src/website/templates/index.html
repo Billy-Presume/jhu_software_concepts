@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="snap-y snap-mandatory overflow-y-scroll h-[calc(100vh-2.5rem)] scroll-smooth">
+  {% include 'components/_home.html' %}
+  {% include 'components/_profile.html' %}
+  {% include 'components/_experience.html' %}
+  {% include 'components/_recognition.html' %}
+  {% include 'components/_contact.html' %}
+</div>
+{% endblock %}

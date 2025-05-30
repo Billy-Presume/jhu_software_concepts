@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar but keep scroll functionality - all browsers */
+html, body {
+  overflow: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Chrome, Safari, Opera, and others using WebKit */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Apply to all scrollable elements */
+* {
+  -ms-overflow-style: none;  /* IE 10+ */
+  scrollbar-width: none;     /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
+
+/* Extend Tailwind's default theme with custom colors */
+@layer base {
+    :root {
+    /* Primary */
+    --primary-50: #dbe4ef;
+    --primary-100: #cfdbea;
+    --primary-200: #c4d3e5;
+    --primary-300: #a0b8d5;
+    --primary-400: #5882b6;
+    --primary-500: #114d97;
+    --primary-600: #0f4588;
+    --primary-700: #0d3a71;
+    --primary-800: #0a2e5b;
+    --primary-900: #08264a;
+
+    /* Secondary */
+    --secondary-50: #d9f2fb;
+    --secondary-100: #cceef9;
+    --secondary-200: #bfeaf8;
+    --secondary-300: #99ddf3;
+    --secondary-400: #4dc3ea;
+    --secondary-500: #00a9e1;
+    --secondary-600: #0098cb;
+    --secondary-700: #007fa9;
+    --secondary-800: #006587;
+    --secondary-900: #00536e;
+
+    /* Tertiary */
+    --tertiary-50: #eddee7;
+    --tertiary-100: #e6d3df;
+    --tertiary-200: #e0c8d7;
+    --tertiary-300: #cea7be;
+    --tertiary-400: #a9658e;
+    --tertiary-500: #84235d;
+    --tertiary-600: #772054;
+    --tertiary-700: #631a46;
+    --tertiary-800: #4f1538;
+    --tertiary-900: #41112e;
+
+    /* Success */
+    --success-50: #dff2ed;
+    --success-100: #d4eee8;
+    --success-200: #caeae2;
+    --success-300: #aaddd0;
+    --success-400: #6ac4ad;
+    --success-500: #2AAA8A;
+    --success-600: #26997c;
+    --success-700: #208068;
+    --success-800: #196653;
+    --success-900: #155344;
+
+    /* Warning */
+    --warning-50: #fdeadd;
+    --warning-100: #fce3d2;
+    --warning-200: #fbddc7;
+    --warning-300: #f9c8a5;
+    --warning-400: #f49e62;
+    --warning-500: #ef751e;
+    --warning-600: #d7691b;
+    --warning-700: #b35817;
+    --warning-800: #8f4612;
+    --warning-900: #75390f;
+
+    /* Error */
+    --error-50: #fadce2;
+    --error-100: #f8d0d8;
+    --error-200: #f6c4ce;
+    --error-300: #f1a1b1;
+    --error-400: #e75b77;
+    --error-500: #DC143C;
+    --error-600: #c61236;
+    --error-700: #a50f2d;
+    --error-800: #840c24;
+    --error-900: #6c0a1d;
+
+    /* Surface */
+    --surface-50: #fefefe;
+    --surface-100: #fefefe;
+    --surface-200: #fdfefe;
+    --surface-300: #fcfdfd;
+    --surface-400: #fafbfc;
+    --surface-500: #f8f9fa;
+    --surface-600: #dfe0e1;
+    --surface-700: #babbbc;
+    --surface-800: #959596;
+    --surface-900: #7a7a7b;
+
+    /* Nowayrose */
+    --nowayrose-100: #feefea;
+    --nowayrose-200: #fce0d5;
+    --nowayrose-300: #fbd0bf;
+    --nowayrose-400: #f9c1aa;
+    --nowayrose-500: #f8b195;
+    --nowayrose-600: #c68e77;
+    --nowayrose-700: #956a59;
+    --nowayrose-800: #63473c;
+    --nowayrose-900: #32231e;
+
+    /* Momopeach */
+    --momopeach-100: #fde3e6;
+    --momopeach-200: #fbc7cc;
+    --momopeach-300: #faaab3;
+    --momopeach-400: #f88e99;
+    --momopeach-500: #f67280;
+    --momopeach-600: #c55b66;
+    --momopeach-700: #94444d;
+    --momopeach-800: #622e33;
+    --momopeach-900: #31171a;
+
+    /* Briarrose */
+    --briarrose-100: #f2e2e6;
+    --briarrose-200: #e6c4ce;
+    --briarrose-300: #d9a7b5;
+    --briarrose-400: #cd899d;
+    --briarrose-500: #c06c84;
+    --briarrose-600: #9a566a;
+    --briarrose-700: #73414f;
+    --briarrose-800: #4d2b35;
+    --briarrose-900: #26161a;
+
+    /* Princelyviolet */
+    --princelyviolet-100: #e2dee5;
+    --princelyviolet-200: #c4bdca;
+    --princelyviolet-300: #a79db0;
+    --princelyviolet-400: #897c95;
+    --princelyviolet-500: #6c5b7b;
+    --princelyviolet-600: #564962;
+    --princelyviolet-700: #41374a;
+    --princelyviolet-800: #2b2431;
+    --princelyviolet-900: #161219;
+
+    /* Matisse */
+    --matisse-100: #d7dee5;
+    --matisse-200: #aebecb;
+    --matisse-300: #869db1;
+    --matisse-400: #5d7d97;
+    --matisse-500: #355c7d;
+    --matisse-600: #2a4a64;
+    --matisse-700: #20374b;
+    --matisse-800: #152532;
+    --matisse-900: #0b1219;
+
+    /* Draculaorchid */
+    --draculaorchid-100: #d4d7d8;
+    --draculaorchid-200: #aaafb1;
+    --draculaorchid-300: #7f8689;
+    --draculaorchid-400: #555e62;
+    --draculaorchid-500: #2a363b;
+    --draculaorchid-600: #222b2f;
+    --draculaorchid-700: #192023;
+    --draculaorchid-800: #111618;
+    --draculaorchid-900: #080b0c;
+
+    /* Turqiosetower */
+    --turqiosetower-100: #eefaf5;
+    --turqiosetower-200: #dcf5eb;
+    --turqiosetower-300: #cbf0e2;
+    --turqiosetower-400: #b9ebd8;
+    --turqiosetower-500: #a8e6ce;
+    --turqiosetower-600: #86b8a5;
+    --turqiosetower-700: #658a7c;
+    --turqiosetower-800: #435c52;
+    --turqiosetower-900: #222e29;
+
+    /* Salmonrose */
+    --salmonrose-100: #ffe8ea;
+    --salmonrose-200: #ffd1d4;
+    --salmonrose-300: #ffbabf;
+    --salmonrose-400: #ffa3a9;
+    --salmonrose-500: #ff8c94;
+    --salmonrose-600: #cc7076;
+    --salmonrose-700: #995459;
+    --salmonrose-800: #66383b;
+    --salmonrose-900: #331c1e;
+
+    /* Aqualake */
+    --aqualake-100: #d5eaeb;
+    --aqualake-200: #acd5d6;
+    --aqualake-300: #82bfc2;
+    --aqualake-400: #59aaad;
+    --aqualake-500: #2f9599;
+    --aqualake-600: #26777a;
+    --aqualake-700: #1c595c;
+    --aqualake-800: #133c3d;
+    --aqualake-900: #091e1f;
+
+    /* Carrobugcrimson */
+    --carrobugcrimson-100: #edd3e2;
+    --carrobugcrimson-200: #dca7c5;
+    --carrobugcrimson-300: #ca7aa8;
+    --carrobugcrimson-400: #b94e8b;
+    --carrobugcrimson-500: #a7226e;
+    --carrobugcrimson-600: #861b58;
+    --carrobugcrimson-700: #641442;
+    --carrobugcrimson-800: #430e2c;
+    --carrobugcrimson-900: #210716;
+
+    /* Chered */
+    --chered-100: #fbd2db;
+    --chered-200: #f7a6b6;
+    --chered-300: #f47992;
+    --chered-400: #f04d6d;
+    --chered-500: #ec2049;
+    --chered-600: #bd1a3a;
+    --chered-700: #8e132c;
+    --chered-800: #5e0d1d;
+    --chered-900: #2f060f;
+
+    /* Mandarinorange */
+    --mandarinorange-100: #fce1d7;
+    --mandarinorange-200: #fac4af;
+    --mandarinorange-300: #f7a688;
+    --mandarinorange-400: #f58960;
+    --mandarinorange-500: #f26b38;
+    --mandarinorange-600: #c2562d;
+    --mandarinorange-700: #914022;
+    --mandarinorange-800: #612b16;
+    --mandarinorange-900: #30150b;
+
+    /* Darkgray */
+    --darkgray-100: #d7d7d7;
+    --darkgray-200: #afafaf;
+    --darkgray-300: #ce3261;
+    --darkgray-400: #5e5e5e;
+    --darkgray-500: #363636;
+    --darkgray-600: #2b2b2b;
+    --darkgray-700: #202020;
+    --darkgray-800: #161616;
+    --darkgray-900: #0b0b0b;
+
+    /* Flurescentred */
+    --flurescentred-100: #ffdcdc;
+    --flurescentred-200: #ffb8b9;
+    --flurescentred-300: #ff9596;
+    --flurescentred-400: #ff7173;
+    --flurescentred-500: #ff4e50;
+    --flurescentred-600: #cc3e40;
+    --flurescentred-700: #992f30;
+    --flurescentred-800: #661f20;
+    --flurescentred-900: #331010;
+
+    /* Verdigris */
+    --verdigris-100: #daefee;
+    --verdigris-200: #b5dedc;
+    --verdigris-300: #8fcecb;
+    --verdigris-400: #6abdb9;
+    --verdigris-500: #45ada8;
+    --verdigris-600: #378a86;
+    --verdigris-700: #296865;
+    --verdigris-800: #1c4543;
+    --verdigris-900: #0e2322;
+
+    /* Neonfuchsia */
+    --neonfuchsia-100: #ffd9e0;
+    --neonfuchsia-200: #ffb4c1;
+    --neonfuchsia-300: #ff8ea3;
+    --neonfuchsia-400: #ff6984;
+    --neonfuchsia-500: #ff4366;
+    --neonfuchsia-600: #cc3651;
+    --neonfuchsia-700: #992a3c;
+    --neonfuchsia-800: #661d26;
+    --neonfuchsia-900: #330f13;
+    }
+}
