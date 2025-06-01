@@ -17,13 +17,20 @@ jhu_software_concepts/
 │ │ └── website/
 │ │ ├── static/
 │ │ │ ├── assets/
+│ │ │ │ ├── Billy Presume - Resume.pdf
+│ │ │ │ └── Headshot.JPG
 │ │ │ ├── css/
+│ │ │ │ ├── colors.min.css
+│ │ │ │ ├── custom.css
+│ │ │ │ └── styles.css
 │ │ │ └── js/
+│ │ │ │ └── scroll.js
 │ │ ├── templates/
 │ │ │ ├── components/
 │ │ │ │ ├── _profile.html
 │ │ │ │ ├── _experience.html
 │ │ │ │ ├── _recognition.html
+│ │ │ │ ├── _projects.html
 │ │ │ │ └── _contact.html
 │ │ │ ├── base.html
 │ │ │ └── index.html

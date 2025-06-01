@@ -48,3 +48,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Dynamically updates selected nav item on scroll
+document.addEventListener("DOMContentLoaded", () => {
+    // Only nav links inside <ul> (ignores logo)
+    const navLinks = document.querySelectorAll('ul a[href^="#"]');
+    const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute("href")));
+
+    function clearActiveClasses() {
+      navLinks.forEach(link => {
+        link.classList.remove('px-4', 'py-2', 'bg-blue-600', 'text-white', 'rounded-lg', 'hover:bg-blue-900');
+        link.classList.add('hover:text-blue-600'); // Restore default hover
+      });
+    }
+
+    function setActive(link) {
+      clearActiveClasses();
+      link.classList.remove('hover:text-blue-600');
+      link.classList.add('px-4', 'py-2', 'bg-blue-600', 'text-white', 'rounded-lg', 'hover:bg-blue-900');
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const visibleSections = entries.filter(entry => entry.isIntersecting);
+        if (visibleSections.length > 0) {
+          const topSection = visibleSections.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+          const activeLink = Array.from(navLinks).find(link => link.getAttribute("href") === `#${topSection.target.id}`);
+          if (activeLink) setActive(activeLink);
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.6
+      }
+    );
+
+    sections.forEach(section => {
+      if (section) observer.observe(section);
+    });
+
+    // Default selection: Profile
+    const defaultLink = document.querySelector('ul a[href="#profile"]');
+    if (defaultLink) setActive(defaultLink);
+  });

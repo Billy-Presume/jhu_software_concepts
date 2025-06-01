@@ -1,7 +1,8 @@
 <!-- Navbar Component -->
 <nav class="bg-white shadow-md sticky top-0 z-50 h-12">
   <div class="max-w-screen-xl flex items-center justify-between mx-auto px-4 h-full">
-    <!-- Logo / Profile -->
+    
+    <!-- Logo / Profile (not part of nav highlighting) -->
     <a href="#profile" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="{{ url_for('static', filename='assets/Headshot.JPG') }}" class="h-8 rounded-full" alt="Logo" />
       <span class="self-center text-xl font-normal font-noto-serif whitespace-nowrap hidden sm:block">
@@ -24,10 +25,11 @@
     <!-- Nav Links (Desktop) -->
     <div class="hidden md:flex md:items-center" id="navbar-default">
       <ul class="font-normal font-noto-serif flex space-x-6 text-sm text-gray-900">
-        <li><a href="#profile" class="hover:text-blue-600">Profile</a></li>
-        <li><a href="#experience" class="hover:text-blue-600">Experience</a></li>
-        <li><a href="#recognition" class="hover:text-blue-600">Recognition</a></li>
-        <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
+        <li><a href="#profile" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-900 transition">Profile</a></li>
+        <li><a href="#experience" class="hover:text-blue-600 transition">Experience</a></li>
+        <li><a href="#recognition" class="hover:text-blue-600 transition">Recognition</a></li>
+        <li><a href="#projects" class="hover:text-blue-600 transition">Projects</a></li>
+        <li><a href="#contact" class="hover:text-blue-600 transition">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -36,10 +38,9 @@
   <div class="md:hidden hidden px-4 pb-4 bg-white dark:bg-gray-900 w-full absolute top-10 left-0 shadow-lg z-40"
        id="mobile-menu">
     <ul class="flex flex-col items-center space-y-4 text-sm text-gray-900 font-noto-serif">
-      <!-- Centered links with space and hover effects -->
       <li>
         <a href="#profile"
-           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-blue-600 hover:bg-gray-100">
+           class="block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-900 transition">
           Home
         </a>
       </li>
@@ -53,6 +54,12 @@
         <a href="#recognition"
            class="block py-2 px-4 rounded transition-colors duration-200 hover:text-blue-600 hover:bg-gray-100">
           Recognition
+        </a>
+      </li>
+      <li>
+        <a href="#projects"
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-blue-600 hover:bg-gray-100">
+          Projects
         </a>
       </li>
       <li>

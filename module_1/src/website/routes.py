@@ -22,12 +22,19 @@ views = Blueprint(
 context = get_portfolio_data()
 
 
-# Handles all requests to the website as they are sections and not pages
+# Handles all requests to the website as they are sections
 @views.route('/')
+@views.route('/home')
 @views.route('/#profile')
+@views.route('/profile')
 @views.route('/#experience')
+@views.route('/experience')
 @views.route('/#recognition')
+@views.route('/recognition')
+@views.route('/#projects')
+@views.route('/projects')
 @views.route('/#contact')
+@views.route('/contact')
 def home():
     """
     Renders the homepage with personal and professional portfolio data.
