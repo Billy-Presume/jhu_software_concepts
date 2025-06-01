@@ -4,7 +4,7 @@
 PYTHON = python3
 VENV_DIR = .venv
 ACTIVATE = source $(VENV_DIR)/bin/activate
-FLASK_APP = src/website/main.py
+FLASK_APP = run.py
 MODULE_NAME = website
 
 # Default: show help

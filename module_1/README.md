@@ -34,13 +34,13 @@ jhu_software_concepts/
 │ │ │ │ └── _contact.html
 │ │ │ ├── base.html
 │ │ │ └── index.html
-│ │ ├── init.py
-│ │ ├── main.py
+│ │ ├── __init__.py
 │ │ ├── data.py
 │ │ ├── models.py
 │ │ └── routes.py
 │ ├── tests/
 │ ├── Makefile
+│ ├── run.py
 │ ├── requirements.txt
 │ ├── pyproject.toml
 │ └── README.md
@@ -102,7 +102,7 @@ The Makefile assumes a virtual environment is active and may reference .venv. If
 
 Example line to modify in the Makefile:
     run:
-        . .venv/bin/activate && flask --app src/website run
+        . .venv/bin/activate && flask --app . run
 Adjust this based on your setup or Python path.
 
 Option 2: Run Flask manually
@@ -110,6 +110,12 @@ If you're unfamiliar with Makefiles or encounter issues:
     cd jhu_software_concepts/module_1
     export FLASK_APP=src/website  # On Windows: set FLASK_APP=src/website
     flask run
+
+Option 3: Run run.py file (AS INSTRUCTED IN ASSIGNMENT DESCRIPTION) (recommended)
+For instructor/grader:
+    cd jhu_software_concepts/module_1
+    python3 run.py  # On Mac
+    python run.py   # On Windows
 
 🌐 Access the Application
 

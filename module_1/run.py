@@ -8,15 +8,15 @@ Description: Entry point for running the Flask application.
 
 import socket
 from flask import Flask
-from . import create_app
+from src.website import create_app
 
 
-def find_free_port(default: int = 8000, max_tries: int = 100) -> int:
+def find_free_port(default: int = 5000, max_tries: int = 100) -> int:
     """
     Find an available TCP port starting from the given default.
 
     Args:
-        default (int): The starting port number to check from. Defaults to 8000.
+        default (int): The starting port number to check from. Defaults to 5000.
         max_tries (int): The maximum number of ports to try. Defaults to 100.
 
     Returns:
@@ -41,7 +41,7 @@ app: Flask = create_app()
 if __name__ == "__main__":
     # The below line might cause a W0621: (redefined-outer-name) linting warning but I prefer calling the find_free_port function and pass the available port to the app
     port: int = find_free_port()
-    print(f"Running on http://0.0.0.0:{port}")
+    # print(f"Running on http://0.0.0.0:{port}")
     app.run(
         debug=True,
         use_reloader=True,  # Explicitly enable auto-reload
