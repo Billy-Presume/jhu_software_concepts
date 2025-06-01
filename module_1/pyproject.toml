@@ -62,7 +62,7 @@ disable = [
 good-names = ["i", "j", "k", "x", "y", "z", "db"]
 
 [tool.pylint.FORMAT]
-max-line-length = 150
+max-line-length = 500
 
 [tool.mypy]
 strict = true

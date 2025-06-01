@@ -175,7 +175,8 @@ def build_recognition() -> list[RecognitionHighlight]:
             company="Hilton, Inc.",
             location="Remote, USA",
             year_or_detail="Apr. 2025",
-            description="Billy, I heard you recently recreated the new analytics website and the feedback is really great now that reporting is all in one place. Thank you for your efforts."
+            description=
+            "Billy, I heard you recently recreated the new analytics website and the feedback is really great now that reporting is all in one place. Thank you for your efforts."
         ),
         RecognitionHighlight(
             title="From My Manager",
@@ -183,7 +184,8 @@ def build_recognition() -> list[RecognitionHighlight]:
             company="Hilton, Inc.",
             location="Remote, USA",
             year_or_detail="Jan. 2025",
-            description="Thank you, Billy, for your innovative design of the revenue management monitoring website. Your efforts resulted in an invaluable tool that enhances our ability to monitor and visualize metrics in an enhanced, user-friendly interface. This will help empower our team and stakeholders with valuable information and has eliminated several hours of manual reporting. You have set a new standard, and we are already receiving positive feedback. Keep up the great work!"
+            description=
+            "Thank you, Billy, for your innovative design of the revenue management monitoring website. Your efforts resulted in an invaluable tool that enhances our ability to monitor and visualize metrics in an enhanced, user-friendly interface. This will help empower our team and stakeholders with valuable information and has eliminated several hours of manual reporting. You have set a new standard, and we are already receiving positive feedback. Keep up the great work!"
         ),
         RecognitionHighlight(
             title="From My Coworker",
@@ -191,7 +193,8 @@ def build_recognition() -> list[RecognitionHighlight]:
             company="Hilton, Inc.",
             location="Remote, USA",
             year_or_detail="Dec. 2024",
-            description="Thank you Billy for helping me understand Python and fixing our automation pipeline. You make things easier to understand."
+            description=
+            "Thank you Billy for helping me understand Python and fixing our automation pipeline. You make things easier to understand."
         )
     ]
 
