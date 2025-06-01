@@ -1,0 +1,96 @@
+# Used as a catch all for now
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Flask instance folder and cache
+instance/
+.webassets-cache
+
+# Testing / coverage
+.coverage
+.tox/
+.nox/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# dotenv environment files
+.env
+.env.*.local
+
+# Pyre type checker
+.pyre/
+
+# mypy
+.mypy_cache/
+
+# celery beat schedule file
+celerybeat-schedule
+
+# profiling data
+.prof
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# local SQLite database
+*.db
+
+# Local SQLite3 database (optional, if you use DB)
+*.sqlite3
