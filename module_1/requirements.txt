@@ -12,7 +12,6 @@ mccabe==0.7.0
 packaging==25.0
 platformdirs==4.3.8
 pluggy==1.6.0
-portfolio @ file:///Users/billypresume/JHU/Terms/Summer%202025/Classes/EN.605.256.8VL.SU25%20-%20Modern%20Software%20Concepts%20in%20Python/jhu_software_concepts/module_1
 pylint==3.3.7
 pytest==8.3.5
 tomlkit==0.13.2
