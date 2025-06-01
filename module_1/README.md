@@ -9,6 +9,7 @@ This is a private portfolio website built using [Flask](https://flask.palletspro
 
 ## 📁 Project Structure
 
+```text
 jhu_software_concepts/
 ├── module_1/
 │ ├── src/
@@ -38,6 +39,7 @@ jhu_software_concepts/
 │ └── README.md
 ├── README.md
 └── .gitignore
+```
 
 ---
 
