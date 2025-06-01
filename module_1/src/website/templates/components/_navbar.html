@@ -1,10 +1,10 @@
 <!-- Navbar Component -->
-<nav class="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50 h-12">
+<nav class="bg-white shadow-md sticky top-0 z-50 h-12">
   <div class="max-w-screen-xl flex items-center justify-between mx-auto px-4 h-full">
     <!-- Logo / Profile -->
     <a href="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="{{ url_for('static', filename='assets/Headshot.JPG') }}" class="h-8 rounded-full" alt="Logo" />
-      <span class="self-center text-xl font-normal font-big-shoulders-text whitespace-nowrap dark:text-white hidden sm:block">
+      <span class="self-center text-xl font-normal font-noto-serif whitespace-nowrap hidden sm:block">
         Billy Presume
       </span>
     </a>
@@ -12,8 +12,7 @@
     <!-- Toggle Button (Mobile) -->
     <button id="mobile-toggle" type="button"
             class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden 
-                   hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 
-                   dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                   hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
             aria-controls="mobile-menu" aria-expanded="false">
       <span class="sr-only">Open main menu</span>
       <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -24,12 +23,12 @@
 
     <!-- Nav Links (Desktop) -->
     <div class="hidden md:flex md:items-center" id="navbar-default">
-      <ul class="font-normal flex space-x-6 text-sm text-gray-900 dark:text-white">
-        <li><a href="#home" class="hover:text-primary-300">Home</a></li>
-        <li><a href="#profile" class="hover:text-primary-300">Profile</a></li>
-        <li><a href="#experience" class="hover:text-primary-300">Experience</a></li>
-        <li><a href="#recognition" class="hover:text-primary-300">Recognition</a></li>
-        <li><a href="#contact" class="hover:text-primary-300">Contact</a></li>
+      <ul class="font-normal font-noto-serif flex space-x-6 text-sm text-gray-900">
+        <li><a href="#home" class="hover:text-blue-600">Home</a></li>
+        <li><a href="#profile" class="hover:text-blue-600">Profile</a></li>
+        <li><a href="#experience" class="hover:text-blue-600">Experience</a></li>
+        <li><a href="#recognition" class="hover:text-blue-600">Recognition</a></li>
+        <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -37,35 +36,35 @@
   <!-- Mobile Dropdown Menu -->
   <div class="md:hidden hidden px-4 pb-4 bg-white dark:bg-gray-900 w-full absolute top-10 left-0 shadow-lg z-40"
        id="mobile-menu">
-    <ul class="flex flex-col items-center space-y-4 text-sm text-gray-900 dark:text-white">
+    <ul class="flex flex-col items-center space-y-4 text-sm text-gray-900 font-noto-serif">
       <!-- Centered links with space and hover effects -->
       <li>
         <a href="#home"
-           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-blue-600 hover:bg-gray-100">
           Home
         </a>
       </li>
       <li>
         <a href="#profile"
-           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-blue-600 hover:bg-gray-100">
           Profile
         </a>
       </li>
       <li>
         <a href="#experience"
-           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-blue-600 hover:bg-gray-100">
           Experience
         </a>
       </li>
       <li>
         <a href="#recognition"
-           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-blue-600 hover:bg-gray-100">
           Recognition
         </a>
       </li>
       <li>
         <a href="#contact"
-           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-primary-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+           class="block py-2 px-4 rounded transition-colors duration-200 hover:text-blue-600 hover:bg-gray-100">
           Contact
         </a>
       </li>

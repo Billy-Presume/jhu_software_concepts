@@ -23,30 +23,43 @@ def build_bio() -> Bio:
     """
     education = [
         Education(
-            institution="Massachusetts Institute of Technology",
-            degree="B.Sc. in Computer Science",
-            graduated="2019",
-            location="Cambridge, MA"
+            institution="Johns Hopkins Univeristy",
+            degree="M.Sc in Engineering Management",
+            graduated="Expected Fall 2026",
+            location="Baltimore, MD",
+            awards="",
+            extracurriculars="",
+            relevant_courses=""
         ),
         Education(
-            institution="Harvard University",
-            degree="M.Sc. in Data Science",
-            graduated="Expected 2025",
-            location="Cambridge, MA"
+            institution="Franciscan Univeristy of Steubenville",
+            degree="B.Sc. in Computer Science",
+            graduated="Graduated May 2022",
+            location="Steubenville, Ohio",
+            awards="Mentors Found Scholarship, Dean’s List, 1st Team All-Conf. (PAC), 4-Year Scholar Athlete",
+            extracurriculars="#3 Singles & #1 Doubles Tennis Player, SWE Club, Cyber Security Club, Chess Club",
+            relevant_courses="OOP, Calculus I & II, Matrix Theory I & II, Discrete Math, Database Systems., Linux & Scripting, Web Dev., Software Q.A., Software Arch."
+
         )
     ]
 
-    aspirations = Aspirations(
-        job_title="AI Product Architect",
-        impact="Design systems that positively impact lives at scale through ethical AI.",
-        progress=
-        "Currently leading backend ML engineering at Google and pursuing a master's in data science."
-    )
+    aspirations = [
+        Aspirations(
+            job_title="Director of Engineering",
+            impact="Bridge engineering and leadership through scalable, sustainable systems.",
+            progress="Leading backend teams while advancing in data science and technical strategy."
+        ),
+        Aspirations(
+            job_title="VP of Engineering",
+            impact="Build future-ready teams and systems rooted in ethical, sustainable engineering.",
+            progress="Driving org-wide impact and mentoring emerging engineering leaders."
+        )
+    ]
 
     return Bio(
         name="Billy Presume",
-        current_position="Software Engineer at Google",
-        location="Boston, MA",
+        current_position="Senior Data Analyst and Web Developer at Hilton",
+        location="Northern Virginia",
         passions=[
             "Engineering/Tinkering", "Chess/Outdoors", "Sports", "Food", "Learning new things"
         ],
@@ -94,9 +107,9 @@ def build_tech_stack() -> TechStack:
         TechStack: The developer's tech stack.
     """
     return TechStack(
-        languages=["Python", "JavaScript", "Go"],
-        tools=["Docker", "Git", "PostgreSQL"],
-        frameworks=["Flask", "FastAPI", "React"]
+        languages=["JavaScript", "Python", "C/C++", "Swift", "Some VBA"],
+        tools=["Docker", "Git", "PostgreSQL/MSSQL/T-SQL", ""],
+        frameworks=["Flask", "FastAPI", "SvelteKit", ".NET"]
     )
 
 

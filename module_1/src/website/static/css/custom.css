@@ -30,3 +30,38 @@ blockquote {
 .font-jet-brains-mono {
    font-family: 'JetBrains Mono', monospace;
 }
+
+.font-quintessential-static {
+  font-family: 'Quintessential', cursive;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-tangerine {
+  font-family: 'Tangerine', cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2em; /* Tangerine is designed to be displayed larger */
+}
+
+.font-merriweather {
+  font-family: 'Merriweather', serif;
+}
+
+.font-noto-serif {
+  font-family: 'Noto Serif', serif;
+}
+
+.font-tangerine-regular {
+  font-family: "Tangerine", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-tangerine-bold {
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+  font-style: normal;
+}

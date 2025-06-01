@@ -22,7 +22,8 @@ install: venv  ## Install dependencies using uv
 
 # App Running
 run:  ## Run the Flask app
-	$(ACTIVATE) && FLASK_APP=$(FLASK_APP) FLASK_ENV=development flask run
+	make clean
+	$(ACTIVATE) && FLASK_APP=$(FLASK_APP) FLASK_ENV=development FLASK_DEBUG=1 flask run
 
 # Code Quality
 format:  ## Format code with yapf

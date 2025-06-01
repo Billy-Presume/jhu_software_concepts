@@ -42,6 +42,7 @@ if __name__ == "__main__":
     print(f"Running on http://0.0.0.0:{port}")
     app.run(
         debug=True,
+        use_reloader=True,  # Explicitly enable auto-reload
         host="0.0.0.0",  # All available interfaces
         port=port  # Dynamically chosen free port
     )

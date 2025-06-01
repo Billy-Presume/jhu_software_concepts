@@ -20,6 +20,9 @@ class Education:
     degree: str
     graduated: str  # e.g. "2021", "Expected 2025", or "In progress"
     location: str
+    awards: str
+    extracurriculars: str
+    relevant_courses: str
 
 
 @dataclass
@@ -39,7 +42,7 @@ class Bio:
     passions: list[str]
     fun_fact: str
     education: list[Education]
-    aspirations: Aspirations
+    aspirations: list[Aspirations]
 
 
 # ------------------------------
