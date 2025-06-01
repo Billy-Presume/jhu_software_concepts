@@ -41,9 +41,7 @@ def home():
 # List of prohibited words for basic profanity filtering
 # I added this just in case, better safe than sorry
 BAD_WORDS = {
-    "fuck", "shit", "damn", "bitch", "asshole", "bastard", "dick", "pussy", "cunt", "bollocks",
-    "bugger", "crap", "wanker", "prick", "slut", "whore", "motherfucker", "twat", "nigger",
-    "faggot", "retard"
+    "bad_word_example_1", "bad_word_example_2", "bad_word_example_3", "bad_word_example_4", "bad_word_example_5", "bad_word_example_6",
 }
 
 
