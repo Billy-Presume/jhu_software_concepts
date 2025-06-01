@@ -1,67 +1,114 @@
-<section id="experience" class="snap-start h-[calc(100vh-3rem)] flex items-center justify-center bg-gray-100">
-  <div class="text-center">
-    <h2 class="text-4xl font-bold mb-4">Experience</h2>
-    <ul class="max-w-xl mx-auto space-y-3 text-left text-gray-700 dark:text-gray-300">
-      <li>• Front-End Developer at TechCorp (2022–Present)</li>
-      <li>• Software Engineer Intern at DevStudio (2021)</li>
-      <li>• Freelance UI/UX projects (2019–2022)</li>
-    </ul>
+<section id="experience" class="snap-start h-[calc(100vh-3rem)] flex items-center justify-center bg-black">
+  <div class="p-4 min-w-[100vw] flex flex-col items-center justify-center ">
+      <p class="mx-auto mb-2 max-w-lg text-center text-5xl tracking-tight text-balance font-jet-brains-mono text-blue-300 sm:text-5xl">Experience</p>
+      <div class="mt-2 flex flex-row">
+        <!-- Work History Section -->
+        <div class="max-w-[33%] h-[80vh]">
+            <div class="bg-gray-900 border border-gray-700 rounded-lg p-4 md:p-2 overflow-auto h-full">
+              <a href="#" class="bg-green-100 text-green-800 text-md font-medium inline-flex items-center px-2.5 py-0.5 rounded-md">
+                <svg class="w-4 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                  <path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z"/>
+                </svg>
+                Most Recent Job
+              </a>
+
+              {% for job in jobs %}
+              <div class="mb-2 p-2 rounded-md h-full">
+                <h3 class="text-xl font-normal text-white font-inter">{{ job.title }} <p class="ml-2 inline text-sm text-gray-500 italic font-jet-brains-mono">{{ job.years }}</p></h3>
+                <p class="text-gray-400 font-merriweather mb-3 ml-1">{{ job.company }} — {{ job.location }}</p>
+                
+                {% for highlight in job.highlights %}
+                  {% if highlight %}
+                    <div class="flex items-start gap-2 mb-2 bg-gray-800 rounded-md border border-gray-700 p-1.5">
+                      <div class="pt-[2px]">
+                        <svg
+                          viewBox="0 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-5 h-5 flex-shrink-0"
+                        >
+                          <!-- Green circle background -->
+                          <circle cx="16" cy="16" r="16" fill="#22C55E" />
+                          <!-- White checkmark -->
+                          <path 
+                            d="M23.258 12.307l-9.486 9.485c-0.238 0.237-0.623 0.237-0.861 0l-0.191-0.191-0.001 0.001-5.219-5.256c-0.238-0.238-0.238-0.624 0-0.862l1.294-1.293c0.238-0.238 0.624-0.238 0.862 0l3.689 3.716 7.756-7.756c0.238-0.238 0.624-0.238 0.862 0l1.294 1.294c0.239 0.237 0.239 0.623 0.001 0.862z"
+                            fill="white"
+                          />
+                        </svg>
+                      </div>
+                      <p class="text-[1.05rem] text-white leading-snug font-thin">
+                        {{ highlight }}
+                      </p>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% endfor %}
+            </div>
+      </div>
+
+      <!-- Tech Stack Section - Tools -->
+      <div class="bg-gray-900 border border-gray-700 rounded-lg p-4 md:p-2 overflow-auto max-w-[33%] h-[80vh] ml-2">
+        <a href="#" class="bg-purple-200 text-purple-800 text-md font-normal inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
+          <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"/>
+          </svg>
+          Technologies I Use
+        </a>
+
+        {% set section_titles = [
+          "Data Engineering & ETL",
+          "BI & Visualization",
+          "DevOps & CI/CD",
+          "Web Dev & Frontend/Backend Tools",
+          "Database & Query Tools",
+          "Cloud & Server Management",
+          "Security & Governance",
+          "Project & Process Management"
+        ] %}
+
+        {% for tools_list in tech_stack.tools %}
+          <div class="mb-2 px-4 py-1.5 bg-gray-800 rounded-md border border-gray-700">
+            <h3 class="text-xl font-normal text-white font-inter">
+              {{ section_titles[loop.index0] }}
+            </h3>
+            {% for tool in tools_list %}
+              <p class="text-sm text-gray-500 italic font-jet-brains-mono inline">
+                {{ tool }}{% if not loop.last %}, {% endif %}
+              </p>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Tech Stack Section - Frameworks & Languages -->
+      <div class="bg-gray-900 border border-gray-700 rounded-lg p-4 md:p-2 overflow-auto max-w-[33%] h-[80vh] ml-2">
+        <a href="#" class="bg-blue-200 text-blue-800 text-md font-normal inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
+          <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"/>
+          </svg>
+          Framworks & Languages I Know
+        </a>
+
+        <div class="mb-2 px-4 py-1.5 bg-gray-800 rounded-md border border-gray-700"> <h3 class="text-xl font-normal text-white font-inter">
+              Frameworks & Libraries
+            </h3>
+            {% for framework in tech_stack.frameworks %}
+              <p class="text-sm text-gray-500 italic font-jet-brains-mono inline">
+                {{ framework }}{% if not loop.last %}, {% endif %}
+              </p>
+              {% endfor %}
+          </div>
+
+          <div class="mb-2 px-4 py-1.5 bg-gray-800 rounded-md border border-gray-700"> <h3 class="text-xl font-normal text-white font-inter">
+              Programming & Scripting Languages
+            </h3>
+            {% for language in tech_stack.languages %}
+              <p class="text-sm text-gray-500 italic font-jet-brains-mono inline">
+                {{ language }}{% if not loop.last %}, {% endif %}
+              </p>
+              {% endfor %}
+          </div>
+      </div>
+    </div>
   </div>
 </section>
-
-
-<!-- Right Process Card: 80% -->
-<div class="w-full lg:w-[50%] p-10 flex flex-col justify-center overflow-auto bg-white animate-fade-in">
-  <!-- Profession -->
-  <div class="text-center space-y-3 mb-12">
-    <h2 class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-violet-600 to-purple-400 text-transparent bg-clip-text tracking-tight drop-shadow-md transition duration-700 ease-in-out transform hover:scale-105">
-      Senior <span class="italic">Data Analyst</span>
-    </h2>
-    <h2 class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text tracking-tight drop-shadow-md transition duration-700 ease-in-out transform hover:scale-105">
-      Full-Stack <span class="italic">Web Developer</span>
-    </h2>
-    <h2 class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-rose-500 via-fuchsia-500 to-pink-400 text-transparent bg-clip-text tracking-tight drop-shadow-md transition duration-700 ease-in-out transform hover:scale-105">
-      <span class="italic">Automation</span> Engineer
-    </h2>
-  </div>
-
-  <!-- Title -->
-  <h1 class="text-5xl font-semibold text-center text-gray-900 mb-12 tracking-tight leading-tight">
-    My <span class="italic text-gray-500">Process</span> and <span class="italic text-gray-500">Philosophy</span>
-  </h1>
-
-  <!-- Points -->
-  <div class="space-y-10 px-2 md:px-6 text-gray-800">
-    <div class="flex items-start space-x-4">
-      <div class="text-indigo-600 text-3xl">➤</div>
-      <p class="text-xl md:text-2xl leading-relaxed">
-        <span class="font-extrabold text-indigo-700">Data</span> tells the story — I just make it 
-        <span class="italic text-purple-600">speak</span>.
-      </p>
-    </div>
-
-    <div class="flex items-start space-x-4">
-      <div class="text-blue-600 text-3xl">➤</div>
-      <p class="text-xl md:text-2xl leading-relaxed">
-        <span class="underline decoration-wavy decoration-blue-500 underline-offset-4">Automation</span> isn’t just efficiency; it’s how I create 
-        <span class="text-blue-700 font-semibold italic">freedom</span>.
-      </p>
-    </div>
-
-    <div class="flex items-start space-x-4">
-      <div class="text-pink-600 text-3xl">➤</div>
-      <p class="text-xl md:text-2xl leading-relaxed">
-        <span class="text-pink-600 font-bold">Design</span> meets 
-        <span class="text-indigo-800 font-extrabold italic">logic</span> in everything I build.
-      </p>
-    </div>
-
-    <div class="flex items-start space-x-4">
-      <div class="text-purple-600 text-3xl">➤</div>
-      <p class="text-xl md:text-2xl leading-relaxed">
-        I don’t just build solutions — I 
-        <span class="uppercase tracking-widest text-purple-700 font-bold italic">engineer impact</span>.
-      </p>
-    </div>
-  </div>
-</div>

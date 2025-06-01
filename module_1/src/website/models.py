@@ -57,13 +57,15 @@ class Job:
     company: str
     years: str
     description: str
+    location: str
+    highlights: list[str]
 
 
 @dataclass
 class TechStack:
     """Technical skills overview."""
     languages: list[str]
-    tools: list[str]
+    tools: list[list[str]]
     frameworks: list[str]
 
 

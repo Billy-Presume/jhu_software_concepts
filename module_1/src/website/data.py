@@ -36,10 +36,12 @@ def build_bio() -> Bio:
             degree="B.Sc. in Computer Science",
             graduated="Graduated May 2022",
             location="Steubenville, Ohio",
-            awards="Mentors Found Scholarship, Dean’s List, 1st Team All-Conf. (PAC), 4-Year Scholar Athlete",
-            extracurriculars="#3 Singles & #1 Doubles Tennis Player, SWE Club, Cyber Security Club, Chess Club",
-            relevant_courses="OOP, Calculus I & II, Matrix Theory I & II, Discrete Math, Database Systems., Linux & Scripting, Web Dev., Software Q.A., Software Arch."
-
+            awards=
+            "Mentors Found Scholarship, Dean’s List, 1st Team All-Conference (PAC), 4-Year Scholar Athlete",
+            extracurriculars=
+            "#3 Singles & #1 Doubles Tennis Player, SWE Club, Cyber Security Club, Chess Club",
+            relevant_courses=
+            "OOP, Calculus I & II, Matrix Theory I & II, Discrete Math, Database Systems., Linux & Scripting, Web Dev., Software Q.A., Software Architecture"
         )
     ]
 
@@ -51,7 +53,8 @@ def build_bio() -> Bio:
         ),
         Aspirations(
             job_title="VP of Engineering",
-            impact="Build future-ready teams and systems rooted in ethical, sustainable engineering.",
+            impact=
+            "Build future-ready teams and systems rooted in ethical, sustainable engineering.",
             progress="Driving org-wide impact and mentoring emerging engineering leaders."
         )
     ]
@@ -83,18 +86,18 @@ def build_jobs() -> list[Job]:
     """
     return [
         Job(
-            title="Software Engineer",
-            company="Google",
-            years="2021–Present",
+            title="Senior Data Analyst & Web Developer",
+            company="Hilton, Inc.",
+            years="Jan 2023 – Present",
             description=
-            "Lead backend development for real-time data pipelines powering analytics across products."
-        ),
-        Job(
-            title="Software Engineering Intern",
-            company="Amazon",
-            years="Summer 2020",
-            description=
-            "Worked on serverless architecture optimizations for internal Lambda services."
+            "Lead development for real-time data pipelines and automations powering analytics across orgs. Worked on serverless architecture optimizations for internal revenue managament consumtion needs.",
+            location="Remote, USA",
+            highlights=[
+                "Single-handedly developed a full-stack IDP authenticated web analytics platform using JavaScript, Python (Pandas & NumPy), Node & Express.js and T-SQL which leveraged predictive modeling, data visualization, and machine learning, improving revenue management for Hilton\u2019s 8,400+ hotels. Achieved 100% satisfaction, saving over $3.6 million annually and reducing analysis time by 1,500 hours.",
+                "Redesigned a Revenue Management toolkit with VBA, ensuring 100% compatibility with Hilton\u2019s global hotel portfolio and saving over 6,000 hours per week in data balancing tasks across 8,400+ hotels company wide.",
+                "Created advanced data transformation models using SQL, Python with NumPy and Pandas to process and clean over 13 billion records, resulting in a 57% reduction in data processing time and delivering actionable insights that improved decision-making efficiency across Hilton\u2019s 24+ brands and market segments.",
+                "Facilitated Node.js deployments on IIS with iisnode, increasing web performance by 23%."
+            ]
         )
     ]
 
@@ -107,9 +110,35 @@ def build_tech_stack() -> TechStack:
         TechStack: The developer's tech stack.
     """
     return TechStack(
-        languages=["JavaScript", "Python", "C/C++", "Swift", "Some VBA"],
-        tools=["Docker", "Git", "PostgreSQL/MSSQL/T-SQL", ""],
-        frameworks=["Flask", "FastAPI", "SvelteKit", ".NET"]
+        languages=[
+            "JavaScript", "Python", "C/C++", "Swift", "VBA", "HTML", "CSS", "SQL", "T-SQL",
+            "Shell Script", "Batch Script"
+        ],
+        tools=[
+            # Data Engineering & ETL
+            ["Alteryx", "Apache Spark", "Apache Kafka", "Databricks", "SSIS Packages"],
+            # BI & Visualization
+            ["Tableau", "Power BI", "Excel", "Google Data Studio"],
+            # DevOps & CI/CD
+            ["Docker", "Kubernetes", "Jenkins", "Git", "GitHub Actions", "Bamboo", "Azure DevOps"],
+            # Web Dev & Frontend/Backend Tools
+            ["Postman", "Fiddler", "Chrome DevTools", "Webpack", "Vite", "NPM", "Yarn"],
+            # Database & Query Tools
+            [
+                "PostgreSQL", "MSSQL", "MySQL", "T-SQL", "Oracle DB", "MongoDB", "Redis",
+                "DBVisualizer", "DBeaver", "SQL Server Management Studio (SSMS)"
+            ],
+            # Cloud & Server Management
+            ["AWS Management Console", "IIS", "Remote Desktop", "Apache HTTP Server", "NGINX"],
+            # Security & Governance
+            ["Checkmarx SCA", "SonarQube"],
+            # Project & Process Management
+            ["Jira", "Confluence", "ServiceNow", "Draw.io", "Visio", "SharePoint"]
+        ],
+        frameworks=[
+            "React", "React Native", "SvelteKit", "Flask", "FastAPI", ".NET", "Node.js",
+            "Express.js", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn", "Plotly"
+        ]
     )
 
 

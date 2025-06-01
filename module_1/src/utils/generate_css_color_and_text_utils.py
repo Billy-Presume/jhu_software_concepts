@@ -49,10 +49,10 @@ def write_to_file(filename: str, lines: List[str]) -> None:
 def main() -> None:
     """Main function that initializes data and triggers the generation process."""
     color_groups: List[str] = [
-        "primary", "secondary", "tertiary", "success", "warning", "error", "surface",
-        "nowayrose", "momopeach", "briarrose", "princelyviolet", "matisse", "draculaorchid",
-        "turqiosetower", "salmonrose", "aqualake", "carrobugcrimson", "chered", "mandarinorange",
-        "darkgray", "flurescentred", "verdigris", "neonfuchsia", "azuregreen", "neongreen", "hltpink"
+        "primary", "secondary", "tertiary", "success", "warning", "error", "surface", "nowayrose",
+        "momopeach", "briarrose", "princelyviolet", "matisse", "draculaorchid", "turqiosetower",
+        "salmonrose", "aqualake", "carrobugcrimson", "chered", "mandarinorange", "darkgray",
+        "flurescentred", "verdigris", "neonfuchsia", "azuregreen", "neongreen", "hltpink"
     ]
 
     shades: List[str] = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"]

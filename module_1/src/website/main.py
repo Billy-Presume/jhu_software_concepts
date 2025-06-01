@@ -10,6 +10,7 @@ import socket
 from flask import Flask
 from . import create_app
 
+
 def find_free_port(default: int = 8000, max_tries: int = 100) -> int:
     """
     Find an available TCP port starting from the given default.
@@ -33,6 +34,7 @@ def find_free_port(default: int = 8000, max_tries: int = 100) -> int:
             except OSError:
                 continue
     raise RuntimeError("No free port found.")
+
 
 app: Flask = create_app()
 
