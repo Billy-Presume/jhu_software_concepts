@@ -1,10 +1,39 @@
-<section id="recognition" class="snap-start h-[calc(100vh-3rem)] flex items-center justify-center bg-gray-100">
-  <div class="text-center">
-    <h2 class="text-4xl font-bold mb-4">Recognition</h2>
-    <ul class="max-w-xl mx-auto space-y-3 text-left text-gray-700">
-      <li>• Awarded “Best UI Developer” – TechFest 2023</li>
-      <li>• Featured in “Top 30 Under 30” Developer List</li>
-      <li>• Speaker at FrontendCon 2024</li>
-    </ul>
+<section id="recognition" class="snap-start h-[calc(100vh-3rem)] flex items-center justify-center bg-black">
+  <div class="p-4 min-w-[100vw] flex flex-col items-center justify-center ">
+      <p class="mx-auto mb-2 max-w-lg text-center text-5xl tracking-tight text-balance font-jet-brains-mono text-blue-300 sm:text-5xl">Recognition</p>
+      <div class="mt-2 flex flex-row items-center justify-center">
+        <!-- Recognition & Highlights Section -->
+       {% for recognition in recognition_highlights %}
+        {% set bg_classes = ["bg-green-100 text-green-800", "bg-purple-100 text-purple-800", "bg-blue-100 text-blue-800"] %}
+        <div class="max-w-[30%] h-auto ml-3">
+          <div class="bg-gray-900 border border-gray-700 rounded-lg p-4 md:p-2 overflow-auto h-full">
+
+            <!-- Dynamic a tag styles based on index -->
+            <a href="#" class="{{ bg_classes[loop.index0 % 3] }} text-md font-medium inline-flex items-center px-2.5 py-0.5 rounded-md">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <path d="M9 6L15 12L9 18" stroke="currentColor"></path>
+              </svg>
+              {{ recognition.title }}
+            </a>
+
+            <div class="mb-2 p-2 rounded-md h-full">
+              <h3 class="text-md font-normal text-white font-inter">
+                {{ recognition.subtitle }}
+                <p class="ml-2 inline text-sm text-gray-500 italic font-jet-brains-mono">{{ recognition.year_or_detail }}</p>
+              </h3>
+              <p class="text-gray-400 font-merriweather mb-3 ml-1">{{ recognition.company }} — {{ recognition.location }}</p>
+
+              <!-- Justified description -->
+               {% set bg_classes = ["bg-green-50 text-green-900", "bg-purple-50 text-purple-900", "bg-blue-50 text-blue-900"] %}
+              <div class="flex items-start gap-2 mb-2 {{ bg_classes[loop.index0 % 3] }} rounded-md border border-gray-700 p-1.5">
+                <p class="text-[1.2rem] leading-snug font-thin text-justify p-2">
+                  {{ recognition.description }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </section>

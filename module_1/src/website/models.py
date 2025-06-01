@@ -86,5 +86,7 @@ class RecognitionHighlight:
     """Award, public recognition, or notable career milestone."""
     title: str
     subtitle: str
+    company: str
+    location: str
     year_or_detail: str
     description: str

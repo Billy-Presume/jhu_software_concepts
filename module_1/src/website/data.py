@@ -170,22 +170,28 @@ def build_recognition() -> list[RecognitionHighlight]:
     """
     return [
         RecognitionHighlight(
-            title="Top 10 Under 30",
-            subtitle="TechWorld",
-            year_or_detail="2023",
-            description="Recognized for open source leadership and innovation."
+            title="From My Org. VP",
+            subtitle="Driving innovation & harnessing efficiency.",
+            company="Hilton, Inc.",
+            location="Remote, USA",
+            year_or_detail="Apr. 2025",
+            description="Billy, I heard you recently recreated the new analytics website and the feedback is really great now that reporting is all in one place. Thank you for your efforts."
         ),
         RecognitionHighlight(
-            title="TEDx Speaker",
-            subtitle="TEDxCambridge",
-            year_or_detail="2022",
-            description="Spoke on ethical frameworks in AI systems."
+            title="From My Manager",
+            subtitle="Interactive, insightful, & redefined visualizations.",
+            company="Hilton, Inc.",
+            location="Remote, USA",
+            year_or_detail="Jan. 2025",
+            description="Thank you, Billy, for your innovative design of the revenue management monitoring website. Your efforts resulted in an invaluable tool that enhances our ability to monitor and visualize metrics in an enhanced, user-friendly interface. This will help empower our team and stakeholders with valuable information and has eliminated several hours of manual reporting. You have set a new standard, and we are already receiving positive feedback. Keep up the great work!"
         ),
         RecognitionHighlight(
-            title="Featured in Wired",
-            subtitle="Wired Magazine",
-            year_or_detail="2021",
-            description="Profiled for building accessible civic tech tools."
+            title="From My Coworker",
+            subtitle="Mentoring with purpose, growing with impact.",
+            company="Hilton, Inc.",
+            location="Remote, USA",
+            year_or_detail="Dec. 2024",
+            description="Thank you Billy for helping me understand Python and fixing our automation pipeline. You make things easier to understand."
         )
     ]
 
