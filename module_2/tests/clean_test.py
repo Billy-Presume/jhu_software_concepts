@@ -34,7 +34,7 @@ def test_parse_status_date(status_text: str, expected_date: Any) -> None:
         ([], set()),
         ([""], {""}),
         (["Accepted", "Waitlisted"], {"accepted", "waitlisted"}),
-    ], # type: ignore
+    ],  # type: ignore
 )
 def test_parse_tags(tags_list: list[str], expected: set[str]) -> None:
     assert _parse_tags(tags_list) == expected
@@ -64,7 +64,7 @@ def test_clean_data_basic() -> None:
         },
     ]
 
-    cleaned = clean_data(raw_entries) # type: ignore
+    cleaned = clean_data(raw_entries)  # type: ignore
     assert len(cleaned) == 2
 
     entry1 = cleaned[0]
@@ -93,7 +93,7 @@ def test_clean_data_basic() -> None:
     assert entry2["comments"] == ""
 
 
-def test_save_data_creates_file(tmp_path) -> None: # type: ignore
+def test_save_data_creates_file(tmp_path) -> None:  # type: ignore
     data = [{ # type: ignore
         "university": "Test Uni",
         "program_name": "Test Prog",
@@ -104,14 +104,14 @@ def test_save_data_creates_file(tmp_path) -> None: # type: ignore
         "tags": set(),
         "comments": "",
     }]
-    filename = tmp_path / "cleaned_data.json" # type: ignore
-    result = save_data(data, base_filename=str(filename)) # type: ignore
+    filename = tmp_path / "cleaned_data.json"  # type: ignore
+    result = save_data(data, base_filename=str(filename))  # type: ignore
     assert result is not None
-    saved_file = tmp_path / result # type: ignore
-    assert saved_file.exists() # type: ignore
-    assert saved_file.read_text(encoding="utf-8") != "" # type: ignore
+    saved_file = tmp_path / result  # type: ignore
+    assert saved_file.exists()  # type: ignore
+    assert saved_file.read_text(encoding="utf-8") != ""  # type: ignore
 
 
 def test_save_data_no_data() -> None:
-    result = save_data([], base_filename="should_not_exist.json") # type: ignore
+    result = save_data([], base_filename="should_not_exist.json")  # type: ignore
     assert result is None

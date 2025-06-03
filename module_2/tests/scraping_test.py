@@ -10,7 +10,7 @@ Note: Private functions (with leading underscore) are imported here **only for t
 from typing import Any, Optional
 import pytest
 
-from ..scrape import _fetch_page, _parse_html, scrape_multiple_pages  # type: ignore
+from ..scrape import _fetch_page, _parse_html, scrape_data  # type: ignore
 
 
 @pytest.mark.parametrize(
@@ -131,7 +131,7 @@ def test_parse_html_handles_missing_spans_and_a_tag() -> None:
     assert results[0]["url"] == ""
 
 
-def test_scrape_multiple_pages_success(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_scrape_data_success(monkeypatch: pytest.MonkeyPatch) -> None:
     pages = 2
     fake_htmls = ["<html>page1</html>", "<html>page2</html>"]
     fake_parsed = [[{"university": "U1"}], [{"university": "U2"}]]
@@ -145,18 +145,18 @@ def test_scrape_multiple_pages_success(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr("module_2.scrape._fetch_page", fake_fetch_page)
     monkeypatch.setattr("module_2.scrape._parse_html", fake_parse_html)
 
-    results = scrape_multiple_pages(base_url="http://fakeurl.com?page={}", pages=pages)
+    results = scrape_data(base_url="http://fakeurl.com?page={}", pages=pages)
     assert len(results) == 2
     assert results[0]["university"] == "U1"
     assert results[1]["university"] == "U2"
 
 
-def test_scrape_multiple_pages_skip_failed_page(monkeypatch: pytest.MonkeyPatch) -> None:
-    fetch_results = ["<html>page1</html>", None, "<html>page3</html>"] # type: ignore
+def test_scrape_data_skip_failed_page(monkeypatch: pytest.MonkeyPatch) -> None:
+    fetch_results = ["<html>page1</html>", None, "<html>page3</html>"]  # type: ignore
     parse_results = [[{"university": "U1"}], [{"university": "U3"}]]
 
     def fake_fetch_page(url: str) -> Optional[str]:
-        return fetch_results.pop(0) # type: ignore
+        return fetch_results.pop(0)  # type: ignore
 
     def fake_parse_html(html: str) -> list[dict[str, Any]]:
         return parse_results.pop(0)
@@ -164,7 +164,7 @@ def test_scrape_multiple_pages_skip_failed_page(monkeypatch: pytest.MonkeyPatch)
     monkeypatch.setattr("module_2.scrape._fetch_page", fake_fetch_page)
     monkeypatch.setattr("module_2.scrape._parse_html", fake_parse_html)
 
-    results = scrape_multiple_pages(base_url="http://fakeurl.com?page={}", pages=3)
+    results = scrape_data(base_url="http://fakeurl.com?page={}", pages=3)
     # The None page should be skipped, so only 2 entries total
     assert len(results) == 2
     # Universities from page 1 and 3

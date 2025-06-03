@@ -4,6 +4,13 @@ Author: Billy Presume
 Created: 2025-06-01
 Modified: 2025-06-03
 Description: Handles web scraping from The GradCafe website.
+
+This scraper was designed to respect TheGradCafe's robots.txt file.
+Checked: https://www.thegradcafe.com/robots.txt
+Date Verified: 2025-06-03
+
+No restrictions were found for the /survey path.
+Only public data is accessed, and requests are made responsibly using a custom User-Agent.
 """
 
 import logging
@@ -104,7 +111,7 @@ def _parse_html(html: str) -> list[dict[str, Any]]:
     return results
 
 
-def scrape_multiple_pages(
+def scrape_data(
     base_url: str = "https://www.thegradcafe.com/survey/",
     pages: int = 10,
 ) -> list[dict[str, Any]]:

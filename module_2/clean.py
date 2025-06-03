@@ -11,13 +11,85 @@ import json
 import logging
 import re
 from typing import Any, Optional
+from datetime import datetime
 
-from scrape import scrape_multiple_pages
+import urllib3
+from scrape import scrape_data
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
+
+import urllib3
+import logging
+from datetime import datetime
+
+
+def check_robots_txt_compliance() -> bool:
+    """Checks whether scraping /survey is allowed for generic User-agent (*).
+
+    Returns:
+        True if allowed, False otherwise.
+    """
+    ROBOTS_URL = "https://www.thegradcafe.com/robots.txt"
+    TARGET_PATHS = ["/", "/survey"]
+    http = urllib3.PoolManager()
+
+    logging.info("🔍 Checking robots.txt for scraping permissions...")
+
+    try:
+        response = http.request("GET", ROBOTS_URL)
+        if response.status != 200:
+            logging.warning("⚠️ Failed to fetch robots.txt. Status code: %d", response.status)
+            return False
+
+        lines = response.data.decode("utf-8").splitlines()
+        in_generic_block = False
+        disallowed: list[str] = []
+        allowed: list[str] = []
+
+        for line in lines:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+
+            if line.lower().startswith("user-agent:"):
+                ua = line.split(":", 1)[1].strip().lower()
+                in_generic_block = (ua == "*")
+                continue
+
+            if in_generic_block:
+                if line.lower().startswith("disallow:"):
+                    path = line.split(":", 1)[1].strip()
+                    if path:
+                        disallowed.append(path)
+                elif line.lower().startswith("allow:"):
+                    path = line.split(":", 1)[1].strip()
+                    if path:
+                        allowed.append(path)
+
+        logging.info("📅 robots.txt checked on %s", datetime.now().strftime("%Y-%m-%d"))
+        logging.info("📄 Disallowed (User-agent: *):")
+        for path in disallowed:
+            logging.info("   🚫 %s", path)
+        logging.info("📄 Allowed (User-agent: *):")
+        for path in allowed:
+            logging.info("   ✅ %s", path)
+
+        # If /survey is disallowed and not explicitly allowed, return False
+        for target in TARGET_PATHS:
+            for block in disallowed:
+                if target.startswith(block):
+                    logging.error("❌ Scraping disallowed: '%s' blocks '%s'", block, target)
+                    return False
+
+        logging.info("✅ /survey is allowed under generic robots.txt rules.")
+        return True
+
+    except Exception as e:
+        logging.exception("⚠️ Error while checking robots.txt: %s", str(e))
+        return False
 
 
 def save_data(data: list[dict[str, Any]], filename: str = "applicant_data.json") -> bool:
@@ -168,24 +240,28 @@ def _parse_tags(tags: list[str]) -> dict[str, Optional[str]]:
 
 def main() -> None:
     """Main function: scrape, clean, save cleaned data."""
+    if not check_robots_txt_compliance():
+        logging.critical("🚫 Scraping is not permitted by robots.txt. Exiting.")
+        return
+
     pages_to_scrape = 10
-    logging.info(f"Starting scraping for {pages_to_scrape} pages...")
-    raw_data = scrape_multiple_pages(pages=pages_to_scrape)
+    logging.info(f"🔍 Starting scraping for {pages_to_scrape} pages...")
+    raw_data = scrape_data(pages=pages_to_scrape)
 
     if not raw_data:
-        logging.error("No data scraped; exiting.")
+        logging.error("📄 No data scraped; exiting.")
         return
 
     cleaned = clean_data(raw_data)
     if not cleaned:
-        logging.error("No cleaned data produced; exiting.")
+        logging.error("⚠️ No cleaned data produced; exiting.")
         return
 
     if not save_data(cleaned):
-        logging.error("Failed to save cleaned data; exiting.")
+        logging.error("⚠️ Failed to save cleaned data; exiting.")
         return
 
-    logging.info("Scraping and cleaning completed successfully.")
+    logging.info("✅ Scraping and cleaning completed successfully.")
 
 
 if __name__ == "__main__":
