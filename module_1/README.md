@@ -39,10 +39,11 @@ jhu_software_concepts/
 │ │ ├── models.py
 │ │ └── routes.py
 │ ├── tests/
-│ ├── Makefile
 │ ├── run.py
+│ ├── Makefile
 │ ├── requirements.txt
 │ ├── pyproject.toml
+│ ├── website_screenshots.pdf
 │ └── README.md
 ├── README.md
 └── .gitignore
