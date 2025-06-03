@@ -7,7 +7,7 @@ Description: Handles web scraping from The GradCafe website.
 
 This scraper was designed to respect TheGradCafe's robots.txt file.
 Checked: https://www.thegradcafe.com/robots.txt
-Date Verified: 2025-06-03
+Date Verified: 2025-06-01
 
 No restrictions were found for the /survey path.
 Only public data is accessed, and requests are made responsibly using a custom User-Agent.

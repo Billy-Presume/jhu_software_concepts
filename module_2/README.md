@@ -91,11 +91,12 @@ jhu_software_concepts/
 
 ## Installation and Running 
 
-Option 1: Run clean.py file (AS INSTRUCTED IN ASSIGNMENT DESCRIPTION) (recommended)
-For instructor/grader:
+- Option 1: Run clean.py file (AS INSTRUCTED IN ASSIGNMENT DESCRIPTION) (recommended)
+  For instructor/grader:
     cd jhu_software_concepts/module_1
     python3 clean.py  # On Mac
     python clean.py   # On Windows
+- NOTE: In clean.py in the main function change the pagepages_to_scrape variable to the desired number of pages you would like to scrape
 
 ---
 

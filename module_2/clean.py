@@ -5,6 +5,13 @@ Created: 2025-06-01
 Modified: 2025-06-03
 Description: Processes raw scraped GradCafe data and converts it into structured clean format,
              and supports loading/saving cleaned data with graceful error handling.
+
+This scraper was designed to respect TheGradCafe's robots.txt file.
+Checked: https://www.thegradcafe.com/robots.txt
+Date Verified: 2025-06-01
+
+No restrictions were found for the /survey path.
+Only public data is accessed, and requests are made responsibly using a custom User-Agent.
 """
 
 import json
@@ -20,10 +27,6 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
-
-import urllib3
-import logging
-from datetime import datetime
 
 
 def check_robots_txt_compliance() -> bool:
@@ -244,7 +247,7 @@ def main() -> None:
         logging.critical("🚫 Scraping is not permitted by robots.txt. Exiting.")
         return
 
-    pages_to_scrape = 10
+    pages_to_scrape = 500 # Liv/Francisco: Change to less for grading if you would like 
     logging.info(f"🔍 Starting scraping for {pages_to_scrape} pages...")
     raw_data = scrape_data(pages=pages_to_scrape)
 
