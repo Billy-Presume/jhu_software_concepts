@@ -94,3 +94,6 @@ celerybeat-schedule
 
 # Local SQLite3 database (optional, if you use DB)
 *.sqlite3
+
+# MacOS  local metadata files
+.DS_Store
