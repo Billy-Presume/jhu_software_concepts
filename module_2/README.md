@@ -9,7 +9,7 @@
 
 - **Module:** Module 1 – Software Concepts  
 - **Assignment:** Grad Cafe Web Scraper  
-- **Due Date:** *[INSERT DUE DATE HERE]*
+- **Due Date:** *June 1, 2025* Extension
 
 ---
 
@@ -67,10 +67,10 @@ jhu_software_concepts/
 │ ├── clean.py
 │ ├── scrape.py
 │ ├── Makefile
+│ ├── robot_txt_screenshot.png
 │ ├── requirements.txt
 │ ├── pyproject.toml
 │ └── README.md
-├── robot_txt_screenshot.png
 ├── README.md
 └── .gitignore
 ```
@@ -93,7 +93,7 @@ jhu_software_concepts/
 
 - Option 1: Run clean.py file (AS INSTRUCTED IN ASSIGNMENT DESCRIPTION) (recommended)
   For instructor/grader:
-    cd jhu_software_concepts/module_1
+    cd jhu_software_concepts/module_2
     python3 clean.py  # On Mac
     python clean.py   # On Windows
 - NOTE: In clean.py in the main function change the pagepages_to_scrape variable to the desired number of pages you would like to scrape
