@@ -95,26 +95,6 @@ def check_robots_txt_compliance() -> bool:
         return False
 
 
-def save_data(data: list[dict[str, Any]], filename: str = "applicant_data.json") -> bool:
-    """Saves cleaned data to a JSON file.
-
-    Args:
-        data: Cleaned data list.
-        filename: Output JSON filename.
-
-    Returns:
-        True if successful, False otherwise.
-    """
-    try:
-        with open(filename, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2)
-        logging.info(f"Saved cleaned data to {filename}")
-        return True
-    except Exception as e:
-        logging.error(f"Failed to save cleaned data to {filename}: {e}")
-        return False
-
-
 def clean_data(raw_data: list[dict[str, Any]]) -> list[dict[str, Optional[str]]]:
     """Cleans and structures the raw scraped data.
 
@@ -241,13 +221,85 @@ def _parse_tags(tags: list[str]) -> dict[str, Optional[str]]:
     return info  # type: ignore
 
 
+def save_data(data: list[dict[str, Any]], filename: str = "applicant_data.json") -> bool:
+    """Saves cleaned data to a JSON file.
+
+    Overwrites the file if it already exists. Validates that data is a list of dictionaries.
+    Logs success or detailed failure information.
+
+    Args:
+        data: Cleaned data list.
+        filename: Output JSON filename.
+
+    Returns:
+        True if successful, False otherwise.
+    """
+    # Defensive runtime check — still valuable even if statically annotated
+    if not all(isinstance(item, dict) for item in data):  # type: ignore # noqa: B007
+        logging.error("Invalid data format: all items must be dictionaries.")
+        return False
+
+    try:
+        with open(filename, "w", encoding="utf-8") as file:
+            json.dump(data, file, indent=2)
+        logging.info(f"Saved cleaned data to {filename}")
+        return True
+    except OSError as e:
+        logging.error(f"File system error when saving to {filename}: {e}", exc_info=True)
+        return False
+    except TypeError as e:
+        logging.error(f"Data serialization error: {e}", exc_info=True)
+        return False
+    except Exception as e:
+        logging.error(f"Unexpected error while saving to {filename}: {e}", exc_info=True)
+        return False
+
+
+def load_data(filename: str = "applicant_data.json") -> list[dict[str, Any]] | None:
+    """Loads JSON data from a file.
+
+    Validates that the loaded data is a list of dictionaries.
+    Logs success or detailed failure information.
+
+    Args:
+        filename: Path to the JSON file to load.
+
+    Returns:
+        A list of dictionaries if successful, None otherwise.
+    """
+    try:
+        with open(filename, "r", encoding="utf-8") as file:
+            data = json.load(file)
+
+        if not isinstance(data, list) or not all(isinstance(item, dict)
+                                                 for item in data):  # type: ignore
+            logging.error(f"Invalid data format in {filename}: Expected a list of dictionaries.")
+            return None
+
+        logging.info(f"Successfully loaded data from {filename}")
+        return data  # type: ignore
+
+    except FileNotFoundError:
+        logging.warning(f"File not found: {filename}")
+        return None
+    except json.JSONDecodeError as e:
+        logging.error(f"JSON decoding error in {filename}: {e}", exc_info=True)
+        return None
+    except OSError as e:
+        logging.error(f"File system error when reading {filename}: {e}", exc_info=True)
+        return None
+    except Exception as e:
+        logging.error(f"Unexpected error while loading from {filename}: {e}", exc_info=True)
+        return None
+
+
 def main() -> None:
     """Main function: scrape, clean, save cleaned data."""
     if not check_robots_txt_compliance():
         logging.critical("🚫 Scraping is not permitted by robots.txt. Exiting.")
         return
 
-    pages_to_scrape = 500 # Liv/Francisco: Change to less for grading if you would like 
+    pages_to_scrape = 1000  # Liv/Francisco: Change to less for grading if you would like
     logging.info(f"🔍 Starting scraping for {pages_to_scrape} pages...")
     raw_data = scrape_data(pages=pages_to_scrape)
 
