@@ -153,12 +153,14 @@ def insert_applicant(connection: extensions.connection, record: ApplicantRecord)
 
     values: dict[str, str | float | None] = {
         'university': record.get('university'), 'program': record.get('program_name'),
-        'date_added': parse_date(record.get('date_added')), 'term': record.get('term'),
-        'status': record.get('status'), 'decision_date': parse_date(record.get('decision_date')),
-        'comments': record.get('comments'), 'us_or_international': record.get('us_international'),
-        'gpa': parse_float(record.get('gpa')), 'gre': parse_float(record.get('gre_score')),
-        'gre_v': parse_float(record.get('gre_v_score')
-                            ), 'gre_aw': parse_float(record.get('gre_aw_score')),
+        'date_added': parse_date(record.get('date_added')), 'term': record.get('term'), 'status':
+            record.get('status'), 'decision_date': parse_date(record.get('decision_date')
+                                                             ), 'comments': record.get('comments'),
+        'us_or_international': record.get('us_international') or record.get('us_or_international'),
+        'gpa': parse_float(record.get('gpa')),
+        'gre': parse_float(record.get('gre_score')) or parse_float(record.get('gre')),
+        'gre_v': parse_float(record.get('gre_v_score')) or parse_float(record.get('gre_v')),
+        'gre_aw': parse_float(record.get('gre_aw_score')) or parse_float(record.get('gre_aw')),
         'degree': record.get('degree'), 'url': record.get('url')
     }
 
