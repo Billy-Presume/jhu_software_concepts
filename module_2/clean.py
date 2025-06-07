@@ -299,7 +299,7 @@ def main() -> None:
         logging.critical("🚫 Scraping is not permitted by robots.txt. Exiting.")
         return
 
-    pages_to_scrape = 1000  # Liv/Francisco: Change to less for grading if you would like
+    pages_to_scrape = 2000  # Liv/Francisco: Change to less for grading if you would like
     logging.info(f"🔍 Starting scraping for {pages_to_scrape} pages...")
     raw_data = scrape_data(pages=pages_to_scrape)
 

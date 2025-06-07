@@ -7,7 +7,7 @@
 
 ## Module Info
 
-- **Module:** Module 1 – Software Concepts  
+- **Module:** Module 2 – Software Concepts  
 - **Assignment:** Grad Cafe Web Scraper  
 - **Due Date:** *June 1, 2025* Extension
 

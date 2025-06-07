@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="flex-grow bg-black text-white p-12 flex flex-wrap justify-around gap-1">
+  {% for question, title, value in questions %}
+  <div class="border border-green-300 rounded-xl shadow-lg p-3 text-center max-h-[35vh]">
+    <h2
+      class="text-xl md:text-xl font-normal mb-3 break-words tracking-wide text-gray-300 font-inter"
+      style="max-width: 30ch; margin-left:auto; margin-right:auto; word-break: break-word; hyphens: auto;"
+    >
+      {{ question }}
+    </h2>
+    <div
+      class="
+        {% if loop.index0 == 2 %}
+          grid grid-cols-2 justify-items-center
+        {% else %}
+          flex flex-wrap mt-10 justify-center
+        {% endif %} font-jet-brains-mono gap-1
+      "
+    >
+      {% for t, v in zip(title, value) %}
+      <div class="bg-gray-800 rounded-lg p-3 w-full max-w-xs">
+        <h3 class="text-lg font-medium text-gray-400 break-words font-jet-brains-mono">
+          {{ t }}
+        </h3>
+        <p class="text-3xl font-normal text-green-300 font-jet-brains-mono">{{ v if v is not none else 'N/A' }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</main>
+{% endblock %}
