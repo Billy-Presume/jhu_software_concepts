@@ -5,7 +5,7 @@ description = "Loads cleaned Grad Café data into PostgreSQL and queries it to e
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "psycopg2", "flask"
+    "psycopg2", "flask", "dotenv"
 ]
 
 [project.optional-dependencies]
