@@ -1,7 +1,5 @@
 # Makefile for module_4 - Pizza Ordering Service
 
-.PHONY: help venv install format lint test clean docs preview-docs
-
 # Configuration
 PYTHON = python3
 VENV_DIR = .venv
@@ -58,3 +56,6 @@ preview-docs: docs  ## Build and open Sphinx docs in default browser (cross-plat
 	else \
 		xdg-open "$(BUILD_DIR)/html/index.html"; \
 	fi
+
+# Phony targets
+.PHONY: help venv install format lint test clean docs preview-docs
