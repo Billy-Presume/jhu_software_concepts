@@ -15,7 +15,7 @@ from typing import Any
 
 from flask import Blueprint, render_template
 from psycopg import Connection
-from psycopg.sql import SQL, Identifier, Literal
+from psycopg.sql import SQL, Identifier, Literal, Composed
 
 from src.website.query_data import execute_query
 from src.utils.database import connect_to_database
@@ -32,9 +32,6 @@ DATA_FILE_2 = os.path.join(
 def load_if_first_time() -> None:
     """
     Loads applicant data from JSON files into the database if environment variable is set.
-
-    Returns:
-        None
 
     Side Effects:
         Modifies the `.env` file to disable subsequent loads.
@@ -58,7 +55,7 @@ def load_if_first_time() -> None:
             with open(env_path, "w", encoding="utf-8") as f:
                 updated = False
                 for line in lines:
-                    if line.startswith("export LOAD_DATA_ON_FIRST_RUN=1"):
+                    if line.strip().startswith("export LOAD_DATA_ON_FIRST_RUN="):
                         f.write("export LOAD_DATA_ON_FIRST_RUN=0\n")
                         updated = True
                     else:
@@ -72,19 +69,20 @@ def load_if_first_time() -> None:
             logger.exception("Failed to load initial applicant data: %s", e)
 
 
-def safe_fetch_query(query: str) -> list[tuple[Any, ...]]:
+def safe_fetch_query(query: Composed) -> list[tuple[Any, ...]]:
     """
-    Executes a SQL query and returns results or an empty list on failure.
+    Executes a SQL query (psycopg Composed) and returns results or an empty list on failure.
 
     Args:
-        query (str): SQL query string (must be pre-validated or composed).
+        query (Composed): psycopg SQL Composed query.
 
     Returns:
         list[tuple[Any, ...]]: Query results or empty list if failed.
     """
     try:
         connection = connect_to_database()
-        results = execute_query(connection, query)
+        query_str = query.as_string(connection)
+        results = execute_query(connection, query_str)
         if connection and not connection.closed:
             connection.close()
         return results or []
@@ -95,23 +93,23 @@ def safe_fetch_query(query: str) -> list[tuple[Any, ...]]:
 
 @views.route("/")
 @views.route("/home")
-def home():
+def home() -> str:
     """
     Renders the homepage with analytics derived from the applicants database.
 
     Returns:
-        HTML template: Rendered home page with tabulated data.
+        str: Rendered HTML page.
     """
     questions: list[tuple[str, list[str], list[Any]]] = []
 
-    # Compose table identifier once
     table = Identifier("applicants")
 
     # 1. Count of entries for Fall 2025 (LIMIT 1)
     query1 = SQL("SELECT COUNT(*) FROM {table} WHERE term = {term} LIMIT 1").format(
         table=table, term=Literal("Fall 2025")
     )
-    fall_2025_count = safe_fetch_query(str(query1))[0][0]
+    fall_2025_count_res = safe_fetch_query(query1)
+    fall_2025_count = fall_2025_count_res[0][0] if fall_2025_count_res else 0
 
     questions.append(
         ("How many entries applied for Fall 2025?", ["Total Entries"], [fall_2025_count])
@@ -125,12 +123,14 @@ def home():
         amer=Literal("American"),
         other=Literal("Other"),
     )
-    intl = safe_fetch_query(str(query2_intl))[0][0]
+    intl_res = safe_fetch_query(query2_intl)
+    intl_count = intl_res[0][0] if intl_res else 0
 
     query2_total = SQL("SELECT COUNT(*) FROM {table} LIMIT 1").format(table=table)
-    total = safe_fetch_query(str(query2_total))[0][0]
+    total_res = safe_fetch_query(query2_total)
+    total_count = total_res[0][0] if total_res else 0
 
-    intl_percent = round((intl / total) * 100, 2) if total else 0
+    intl_percent = round((intl_count / total_count) * 100, 2) if total_count else 0
     questions.append((
         "What percentage of entries are international?", ["International %"], [f"{intl_percent}%"]
     ))
@@ -148,10 +148,11 @@ def home():
         LIMIT 1
         """
     ).format(table=table)
-    q3_result = safe_fetch_query(str(query3))[0]
+    q3_result = safe_fetch_query(query3)
+    averages = q3_result[0] if q3_result else (None, None, None, None)
     questions.append((
         "Average GPA, GRE, GRE V, GRE AW for all applicants providing those values?",
-        ["Avg. GPA", "Avg. GRE", "Avg. GRE V", "Avg. GRE AW"], list(q3_result)
+        ["Avg. GPA", "Avg. GRE", "Avg. GRE V", "Avg. GRE AW"], list(averages)
     ))
 
     # 4. Average GPA of American students in Fall 2025 (LIMIT 1)
@@ -166,13 +167,14 @@ def home():
         amer=Literal("American"),
         term=Literal("Fall 2025"),
     )
-    avg_gpa_american = safe_fetch_query(str(query4))[0][0]
+    avg_gpa_american_res = safe_fetch_query(query4)
+    avg_gpa_american = avg_gpa_american_res[0][0] if avg_gpa_american_res else None
     questions.append((
         "Average GPA of American students applying for Fall 2025?", ["Avg. American GPA"],
         [avg_gpa_american]
     ))
 
-    # 5. Acceptance rate for Fall 2025 (LIMIT 1)
+    # 5. Acceptance count and acceptance percentage for Fall 2025 (LIMIT 1)
     query5 = SQL(
         """
         SELECT COUNT(*) FROM {table}
@@ -184,10 +186,10 @@ def home():
         accepted=Literal("Accepted"),
         term=Literal("Fall 2025"),
     )
-    accepted_count = safe_fetch_query(str(query5))[0][0]
+    accepted_count_res = safe_fetch_query(query5)
+    accepted_count = accepted_count_res[0][0] if accepted_count_res else 0
 
-    acceptance_percent = round((accepted_count / fall_2025_count) *
-                               100, 2) if fall_2025_count else 0
+    acceptance_percent = round((accepted_count / fall_2025_count) * 100, 2) if fall_2025_count else 0
     questions.append(
         ("Acceptance percentage for Fall 2025?", ["Acceptance %"], [f"{acceptance_percent}%"])
     )
@@ -204,7 +206,8 @@ def home():
         term=Literal("Fall 2025"),
         accepted=Literal("Accepted"),
     )
-    accepted_gpa = safe_fetch_query(str(query6))[0][0]
+    accepted_gpa_res = safe_fetch_query(query6)
+    accepted_gpa = accepted_gpa_res[0][0] if accepted_gpa_res else None
     questions.append(
         ("Average GPA for accepted applicants in Fall 2025?", ["Avg. GPA"], [accepted_gpa])
     )
@@ -224,13 +227,15 @@ def home():
         cs=Literal("%Computer Science%"),
         master=Literal("%Master%"),
     )
-    jhu_cs_count = safe_fetch_query(str(query7))[0][0]
+    jhu_cs_count_res = safe_fetch_query(query7)
+    jhu_cs_count = jhu_cs_count_res[0][0] if jhu_cs_count_res else 0
     questions.append((
         "How many applicants applied to JHU for a CS Master's?", ["JHU CS Masters Applicants"],
         [jhu_cs_count]
     ))
 
-    context: dict[str, list[tuple[Any, ...]] |
-                  list[tuple[str, list[str], list[Any]]]] = {"questions": questions}
+    context: dict[str, list[tuple[Any, ...]] | list[tuple[str, list[str], list[Any]]]] = {
+        "questions": questions
+    }
 
     return render_template("index.html", zip=zip, **context)
