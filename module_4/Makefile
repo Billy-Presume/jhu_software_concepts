@@ -1,10 +1,14 @@
 # Makefile for module_4 - Pizza Ordering Service
 
+.PHONY: help venv install format lint test clean docs preview-docs
+
 # Configuration
 PYTHON = python3
 VENV_DIR = .venv
 ACTIVATE = source $(VENV_DIR)/bin/activate
 MODULE_NAME = src
+DOCS_DIR = docs
+BUILD_DIR = $(DOCS_DIR)/_build
 
 # Default: show help
 .DEFAULT_GOAL := help
@@ -35,3 +39,22 @@ clean:  ## Remove __pycache__, .pyc, and pytest cache files
 	find . -type d -name "__pycache__" -exec rm -r {} +; \
 	find . -type d -name ".pytest_cache" -exec rm -r {} +; \
 	find . -type f -name "*.pyc" -delete
+
+# Documentation
+docs:  ## Build Sphinx HTML documentation (cross-platform)
+	@echo "Building Sphinx HTML documentation..."
+	@if [ "$$OS" = "Windows_NT" ]; then \
+		$(PYTHON) -m sphinx -b html $(DOCS_DIR) $(BUILD_DIR)/html; \
+	else \
+		sphinx-build -b html $(DOCS_DIR) $(BUILD_DIR)/html; \
+	fi
+
+preview-docs: docs  ## Build and open Sphinx docs in default browser (cross-platform)
+	@echo "Opening Sphinx documentation in browser..."
+	@if [ "$$OS" = "Windows_NT" ]; then \
+		START "" "$(BUILD_DIR)/html/index.html"; \
+	elif [ "$$(uname)" = "Darwin" ]; then \
+		open "$(BUILD_DIR)/html/index.html"; \
+	else \
+		xdg-open "$(BUILD_DIR)/html/index.html"; \
+	fi

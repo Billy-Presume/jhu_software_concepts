@@ -30,7 +30,7 @@ templates_path = ['_templates']
 html_static_path = ['_static']
 
 # HTML theme
-html_theme = 'alabaster'  # You can change to 'sphinx_rtd_theme' if needed
+html_theme = 'sphinx_rtd_theme'  # You can change to 'alabaster' if needed
 
 # Source file settings
 exclude_patterns = []

@@ -112,7 +112,8 @@ make lint
 ```bash
 # Build Sphinx docs
 cd module_4/docs
-make html
+make docs           # REPLACES: make html
+make preview-docs   # Build and open them in a browser
 ```
 
 HTML output will be available in `module_4/docs/_build/html/index.html` or view it online via your [ReadTheDocs link].
