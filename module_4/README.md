@@ -54,7 +54,11 @@ jhu_software_concepts/
     │   ├── index.rst
     │   ├── modules.rst
     │   └── _build/ (generated HTML)
+    ├── html/
+    │   └── (Sphinx generated HTML and sources)
+    ├── module_4_readthedocs_screenshots.pdf
     ├── requirements.txt
+    ├── .pylintrc
     ├── Makefile
     ├── README.md
     ├── pyproject.toml
