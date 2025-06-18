@@ -55,7 +55,7 @@ def connect_to_database() -> Optional[Connection]:
             port=int(port),
         )
 
-        logger.info("Successfully connected to the PostgreSQL database.")
+        # logger.info("Successfully connected to the PostgreSQL database.")
         return conn
 
     except OperationalError as e:

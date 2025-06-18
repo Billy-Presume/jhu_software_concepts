@@ -45,7 +45,7 @@ def execute_query(
 
             if str(query).strip().upper().startswith("SELECT"):
                 results = cursor.fetchall()
-                logger.info("Query returned %d row(s).", len(results))
+                # logger.info("Query returned %d row(s).", len(results))
                 return results
 
             connection.commit()
