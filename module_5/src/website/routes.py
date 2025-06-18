@@ -189,7 +189,8 @@ def home() -> str:
     accepted_count_res = safe_fetch_query(query5)
     accepted_count = accepted_count_res[0][0] if accepted_count_res else 0
 
-    acceptance_percent = round((accepted_count / fall_2025_count) * 100, 2) if fall_2025_count else 0
+    acceptance_percent = round((accepted_count / fall_2025_count) *
+                               100, 2) if fall_2025_count else 0
     questions.append(
         ("Acceptance percentage for Fall 2025?", ["Acceptance %"], [f"{acceptance_percent}%"])
     )
@@ -234,8 +235,7 @@ def home() -> str:
         [jhu_cs_count]
     ))
 
-    context: dict[str, list[tuple[Any, ...]] | list[tuple[str, list[str], list[Any]]]] = {
-        "questions": questions
-    }
+    context: dict[str, list[tuple[Any, ...]] |
+                  list[tuple[str, list[str], list[Any]]]] = {"questions": questions}
 
     return render_template("index.html", zip=zip, **context)

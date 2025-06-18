@@ -7,9 +7,9 @@
 
 ## Module Info
 
-- **Module:** Module 3 – Software Concepts  
+- **Module:** Module 5 – Software Concepts  
 - **Assignment:** Grad Cafe Data Analysis  
-- **Due Date:** *June 8, 2025*
+- **Due Date:** *June 17, 2025*
 
 ---
 
@@ -48,7 +48,7 @@ The scraper extracted the following data fields (when available) from each appli
 
 ```text
 jhu_software_concepts/
-├── module_3/
+├── module_5/
 │ ├── src/
 │ │ ├── utils/
 │ │ │  ├── __init__.py
@@ -77,6 +77,7 @@ jhu_software_concepts/
 │ ├── app.py
 │ ├── .env
 │ ├── .pylintrc
+│ ├── dependency.svg
 │ ├── limitations.pdf
 │ ├── Makefile
 │ ├── requirements.txt
@@ -126,9 +127,17 @@ jhu_software_concepts/
 - **SIXTH**: After AND ONLY after you make sure all the previous steps are successfully completed, navigate to module_3 in the terminal:
   - Run app.py file (recommended)
     For instructor/grader:
-      cd jhu_software_concepts/module_3
-      python3 app.py  # On Mac
-      python app.py   # On Windows
+      cd jhu_software_concepts/module_5
+  - Use the makefile
+    make venv — create virtual environment
+    make install — install dependencies
+    make run — run your Flask app
+    make dependency — generate and open dependency graph SVG
+    make clean — clean caches
+    make help — show targets
+  - Or run manually
+    python3 app.py  # On Mac
+    python app.py   # On Windows
 
 ---
 
